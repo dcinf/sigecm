@@ -1,0 +1,394 @@
+
+<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
+    <!-- Begin page -->
+    <div class="wrapper">
+        
+        <!-- ========== Left Sidebar Start ========== -->
+        {{sidebar}}
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                {{navbar}}
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">SIGECM</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                        <li class="breadcrumb-item active">Painel Inicial</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Gestão do Armamento</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                     
+                    <!--
+                        ======================================================
+                        | Modal das Notificacoes
+                        ======================================================
+                    -->
+                    <!-- Scrollable modal -->
+                    
+                    <div class="modal fade" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="scrollableModalTitle">Armas em circulação por mais de 7 dias</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="table-responsive">
+                                        <h5 class="mb-4 text-uppercase"><i
+                                            class="mdi mdi-account-circle me-1"></i>Dados de lavantamento</h5>
+                                        <table class="table table-centered table-nowrap mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Nome Completo</th>
+                                                    <th scope="col">Subunidade</th>
+                                                    <th scope="col">Tipo da arma</th>
+                                                    <th scope="col">Numero da arma</th>
+                                                    <th scope="col">Contacto</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{expiredWithdraws}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-primary">Imprimir</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                    <!--
+                        ======================================================
+                        | Fim Modal das Notificacoes
+                        ======================================================
+                    -->
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-8">
+                                            <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Total de Armamento</h5>
+                                            <h3 class="my-2 py-1">{{totalArmas}}</h3>
+                                            <p class="mb-0 text-muted">
+                                                <span class="text-success me-2">Disponiveis : </i> {{TotalDisponivel}}</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="text-end">
+                                                <div id="campaign-sent-chart" data-colors="#727cf5"></div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end card-body -->
+                            </div> <!-- end card -->
+                        </div> <!-- end col -->
+    
+                        <div class="col-md-6 col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-9">
+                                            <h5 class="text-muted fw-normal mt-0 text-truncate" title="New Leads">Total de Retiradas</h5>
+                                            <h3 class="my-2 py-1">{{retiradas}}</h3>
+                                            <p class="mb-0 text-muted">
+                                                <span class="text-success me-2">Total de Retiradas feitas </i>Hoje</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="text-end">
+                                                <div id="new-leads-chart" data-colors="#0acf96"></div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end card-body -->
+                            </div> <!-- end card -->
+                        </div> <!-- end col -->
+
+                        <div class="col-md-6 col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-9">
+                                            <h5 class="text-muted fw-normal mt-0 text-truncate" title="Deals">Total de Devoluções </h5>
+                                            <h3 class="my-2 py-1">{{saidas}}</h3>
+                                            <p class="mb-0 text-muted">
+                                                <span class="text-success me-2">Total de Devoluções feitas </i>Hoje</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="text-end">
+                                                <div id="deals-chart" data-colors="#727cf5"></div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end card-body -->
+                            </div> <!-- end card -->
+                        </div> <!-- end col -->
+
+                        <div class="col-md-6 col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-9">
+                                            <h5 class="text-muted fw-normal mt-0 text-truncate" title="Booked Revenue">Total de Utilizadores</h5>
+                                            <h3 class="my-2 py-1">{{utilizadores}}</h3>
+                                            <p class="mb-0 text-muted">
+                                                <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> Utilizadores do sistema</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="text-end">
+                                                <div  data-colors="#0acf97">
+                                                    <i class="mdi mdi-account-group-outline text-primary" style="font-size: 64px;"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end card-body -->
+                            </div> <!-- end card -->
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href="#" class="p-0 float-end">Export <i class="mdi mdi-download ms-1"></i></a>
+                                    <h4 class="header-title mt-1 mb-3">Armamento</h4>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-centered mb-0 font-14">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Tipo</th>
+                                                    <th>Quantidade</th>
+                                                    <th>Disponivel</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!--{{armasItem}}-->
+                                                <tr>
+                                                    <td>Pistola</td>
+                                                    <td>2</td>
+                                                    <td><span class="text-success me-2">1</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Fuzil</td>
+                                                    <td>2</td>
+                                                    <td><span class="text-success me-2">2</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Metralhadora</td>
+                                                    <td>1</td>
+                                                    <td><span class="text-success me-2">1</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- end table-responsive-->
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col-->
+
+                        <div class="col-xl-4 col-lg-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href="#" class="p-0 float-end">Export <i class="mdi mdi-download ms-1"></i></a>
+                                    <h4 class="header-title mt-1 mb-3">Munições</h4>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-centered mb-0 font-14">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Tipo</th>
+                                                    <th>Quantidade</th>
+                                                    <th>Em circulação</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>9mm</td>
+                                                    <td>299</td>
+                                                    <td>15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>762mm</td>
+                                                    <td>51.126</td>
+                                                    <td>0</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- end table-responsive-->
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col-->
+
+                        <div class="col-xl-4 col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href="#" class="p-0 float-end">Export <i class="mdi mdi-download ms-1"></i></a>
+                                    <h4 class="header-title mt-1 mb-3">Equipamentos</h4>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-centered mb-0 font-14">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Tipo</th>
+                                                    <th>Quant</th>
+                                                    <th>Em circulação</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Colete a prova de balas</td>
+                                                    <td>501</td>
+                                                    <td>1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Capacete balistico</td>
+                                                    <td>305</td>
+                                                    <td>1</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- end table-responsive-->
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col-->
+
+                    </div>
+
+
+
+
+                    <div class="row">
+
+                        <div class="col-xxl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h4 class="header-title mb-0">Ultimas Arrecadações</h4>
+                                        <div>
+                                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                <option selected>Hoje</option>
+                                                <option value="1">Ontem</option>
+                                                <option value="2">Esta semana</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-centered table-nowrap mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Nome Completo</th>
+                                                    <th scope="col">Subunidade</th>
+                                                    <th scope="col">Tipo da Arma</th>
+                                                    <th scope="col">Numero da Arma</th>
+                                                    <th scope="col">Tipo</th>
+                                                    <th scope="col">Assinatura</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{resumo}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row-->
+                    <!-- end row -->
+                    <!-- end row-->
+
+                    
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+
+            <!-- Footer Start -->
+           {{footer}}
+            <!-- end Footer -->
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+
+    <!-- Right Sidebar -->
+    {{rightsidebar}}
+
+    <div class="rightbar-overlay"></div>
+    <!-- /End-bar -->
+
+    {{scriptModal}}
+
+    <!-- bundle -->
+    <script src="resources/views/assets/js/vendor.min.js"></script>
+    <script src="resources/views/assets/js/app.min.js"></script>
+
+    <!-- third party js -->
+    <script src="resources/views/assets/js/vendor/chart.min.js"></script>
+    <!-- third party js ends -->
+
+    <!-- demo app -->
+    <script src="resources/views/assets/js/pages/demo.dashboard-projects.js"></script>
+    <!-- end demo js-->
+     <!-- third party:js -->
+    <script src="resources/views/assets/js/vendor/apexcharts.min.js"></script>
+    <!-- third party end -->
+
+     <!-- demo app -->
+     <script src="resources/views/assets/js/pages/demo.crm-project.js"></script>
+     <!-- end demo js-->
+
+     <!-- Todo js -->
+     <script src="resources/views/assets/js/ui/component.todo.js"></script>
+
+     <!-- demo app -->
+     <script src="resources/views/assets/js/pages/demo.crm-dashboard.js"></script>
+     <!-- end demo js-->
+
+
+
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            {{mostrarScriptModal}}
+        });
+    </script>
+
+</body>

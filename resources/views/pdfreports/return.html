@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatorio</title>
+    <style>
+        /*.cabecalho {
+            width: 100%;
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+
+        .cabecalho_logo {
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .logo_page {
+            max-width: 40px; 
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .cabecalho_info {
+            margin-top: 5px;
+        }
+
+        .cabecalho_info h3,
+        .cabecalho_info p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cabecalho_info h3 {
+            font-size: 20px;
+        }
+
+        .titulo_documento h4{
+            font-weight: 400;
+            font-size: 17px;
+        }
+
+        .titulo_documento .line{
+            width: 100%;
+            border-top: 1px solid #ccc;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+
+        th {
+            background-color:  #727cf5;
+            color: white;
+        }
+
+        footer{
+            position: absolute;
+            bottom: 0;
+            float: right;
+            font-size: 10px;
+        }*/
+    </style>
+
+<style>
+            body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px; /* aumenta o tamanho do logo */
+            height: 100%;
+            background-image: url("http://localhost:8888/sigecm/resources/views/assets/images/emblema.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: translate(-50%, -50%);
+            opacity: 0.1; /* reduz a opacidade */
+            z-index: -1;
+        }
+
+    .cabecalho {
+        width: 100%;
+        text-align: center; /* Centering the content */
+        margin-bottom: 20px; /* Optional: adds space below the header */
+    }
+
+    .cabecalho_logo {
+        display: inline-block;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .logo_page {
+        max-width: 40px; 
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .cabecalho_info {
+        margin-top: 5px;
+    }
+
+    .cabecalho_info h6,
+    .cabecalho_info p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .cabecalho_info h6 {
+        text-transform: uppercase;
+        font-size: 17px;
+        padding-bottom: 5px;
+        font-weight: 400;
+    }
+
+    .cabecalho_info .divisor_row{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .cabecalho_info h3{
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+        font-size: 22px;
+        padding-top: 5px;
+    }
+
+    .cabecalho_info h4{
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+        font-size: 17px;
+        padding-top: 5px;
+    }
+
+    .titulo_documento h4{
+        text-align: justify;
+        line-height: 1.6; 
+        font-weight: 400;
+        font-size: 17px;
+    }
+
+    .titulo_documento .line{
+        width: 100%;
+        border-top: 1px solid #ccc;
+        margin-top: -10px;
+        margin-bottom: 20px;
+    }
+
+    #customers {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #customers td, #customers th {
+        border: 1px solid #000;
+        padding: 8px;
+    }
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #ddd;
+        color: #000;
+    }
+
+    footer{
+        position: absolute;
+        bottom: 0;
+        float: right;
+        font-size: 10px;
+    }
+</style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="cabecalho">
+        <div class="cabecalho_logo">
+            <!-- Logo image with centering applied -->
+            <img class="logo_page" src="http://localhost:8888/sigecm/resources/views/assets/images/emblema.png" alt="Logo">
+        </div>
+        
+        <div class="cabecalho_info">
+            <h6>República de Moçambique</h6>
+            <div class="divisor_row">
+                <div class="divisor">
+                </div>
+            </div>
+            <h3>Presidência da República</h3>
+            <h4>Casa Militar</h4>
+            <h4 style="font-weight: 400; text-transform: capitalize;">Departamento de Administração Logística</h4>
+            <h4 style="font-weight: 400; text-transform: none;">Repartição de Armamento e Munições</h4>
+        </div>
+    </div>
+
+    <div class="titulo_documento">
+        <h4>{{titulo}}</h4>
+        <div class="line"></div>
+    </div>
+
+      <table id="customers">
+        <thead>
+            <tr>
+                <th>Nº</th>
+                <th>Patente e Nome</th>
+                <th>Tipo da arma</th>
+                <th>Numero de serie:</th>
+                <th>Levantado aos:</th>
+                <th>Devolvido aos:</th>
+                <th>Ass. Fiel</th>
+                <th>Ass. Receptor</th>
+              </tr>
+        </thead>
+        <tbody>
+            {{tableItem}}
+        </tbody>
+    </table>
+
+
+    <footer>
+        <p>Processado por Computador por {{utilizador}}</p>
+        <p>{{data_atual}}</p>
+    </footer>
+
+</body>
+</html>

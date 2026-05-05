@@ -1,0 +1,194 @@
+{{navbar}}
+{{sidebar}}
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Fardamentos</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{URL}}/painel">Pagina Inicial</a></li>
+          <li class="breadcrumb-item">Fardamentos</li>
+          <li class="breadcrumb-item active">Novo Fardamento</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Formulario de Cadastro</h5>
+
+              <!-- Multi Columns Form -->
+              <form class="row g-3" method="POST">
+                <div class="col-md-6">
+                  <label for="inputState" class="form-label">Tipo de Fardamento: </label>
+                  <select id="inputState" class="form-select" name="text_tipo_fardamento">
+                    <option selected disabled value="">Selecione...</option>
+                    <option value="Boina">Boina</option>
+                    <option value="Panama Chapeu">Panama / Chapéu</option>
+                    <option value="Camisa">Camisa</option>
+                    <option value="Camiseta">Camiseta</option>
+                    <option value="Dolman">Dolman</option>
+                    <option value="Cinto">Cinto</option>
+                    <option value="Cinturao">Cinturão</option>
+                    <option value="Calca">Calça</option>
+                    <option value="Meias">Meias</option>
+                    <option value="Botas">Botas</option>
+                    <option value="Luvas">Luvas</option>
+                    <option value="Capa de chuva">Capa de chuva</option>
+                    <option value="Cantil">Cantil</option>
+                    <option value="Macacao">Macacão</option>
+                    <option value="Coldre">Coldre</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputState" class="form-label">Material de Fabricação:</label>
+                  <select id="inputState" class="form-select" name="text_material_fabricacao">
+                    <option selected disabled value="">Selecione...</option>
+                    <option value="Algodao">Algodão</option>
+                    <option value="Poliester">Poliéster</option>
+                    <option value="Jeans">Jeans</option>
+                    <option value="Couro">Couro</option>
+                    <option value="Tecido anti-chamas">Tecido anti-chamas</option>
+                    <option value="Kevlar">Kevlar</option>
+                    <option value="Malha fria">Malha fria</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="inputState" class="form-label">Cor do Material: </label>
+                  <select id="inputState" class="form-select" name="text_cor_material">
+                    <option selected disabled value="">Selecione...</option>
+                    <option value="Cinza">Cinza</option>
+                    <option value="Preto">Preto</option>
+                    <option value="Verde Militar">Verde Militar</option>
+                    <option value="Verde com Listras">Verde com Listras</option>
+                    <option value="Vermelho">Vermelho</option>
+                    <option value="Branco">Branco</option>
+                    <option value="Camuflado">Camuflado</option>
+                    <option value="Bege">Bege</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="inputState" class="form-label">Finalidade: </label>
+                  <select id="inputState" class="form-select" name="text_finalidade">
+                    <option selected disabled value="">Selecione...</option>
+                    <option value="Uso diario rotineiro">Uso diário / rotineiro</option>
+                    <option value="Operacao em campo">Operação em campo</option>
+                    <option value="Area administrativa">Área administrativa</option>
+                    <option value="Atividades de risco">Atividades de risco</option>
+                    <option value="Visibilidade Sinalizacao">Visibilidade / Sinalização</option>
+                    <option value="Protecao quimica biologica">Proteção química / biológica</option>
+                    <option value="Uniforme de apresentacao">Uniforme de apresentação</option>
+                    <option value="Atendimento ao publico">Atendimento ao público</option>
+                    <option value="Jardinagem">Jardinagem</option>
+                    <option value="Mecanica">Mecânica</option>
+                    <option value="Cozinha">Cozinha</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="inputState" class="form-label">Durabilidade: </label>
+                  <select id="inputState" class="form-select" name="text_durabilidade">
+                    <option selected disabled value="">Selecione...</option>
+                    <option value="Baixa (3 a 6 meses)">Baixa (3 a 6 meses)</option>
+                    <option value="Media (6 a 12 meses)">Média (6 a 12 meses)</option>
+                    <option value="Alta (acima de 12 meses)">Alta (acima de 12 meses)</option>
+                    <option value="Resistente a abrasão">Resistente à abrasão</option>
+                    <option value="Resistente ao rasgo">Resistente ao rasgo</option>
+                    <option value="Resistente a chamas">Resistente a chamas</option>
+                    <option value="Resistente à água">Resistente à água</option>
+                    <option value="Resistente a produtos químicos">Resistente a produtos químicos</option>
+                    <option value="Resistente à eletricidade">Resistente à eletricidade</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="inputState" class="form-label">Instruções de Lavagem / Manutenção: </label>
+                  <select id="inputState" class="form-select" name="text_lavagem_manutencao">
+                    <option selected disabled value="">Selecione...</option>
+                    <option value="Lavagem comum (máquina)">Lavagem comum (máquina)</option>
+                    <option value="Lavagem industrial">Lavagem industrial</option>
+                    <option value="Lavar à mão">Lavar à mão</option>
+                    <option value="Não usar alvejante">Não usar alvejante</option>
+                    <option value="Não passar ferro">Não passar ferro</option>
+                    <option value="Passar a ferro em temperatura baixa">Passar a ferro em temperatura baixa</option>
+                    <option value="Secar à sombra">Secar à sombra</option>
+                    <option value="Secagem em tambor proibida">Secagem em tambor proibida</option>
+                    <option value="Manutenção especializada">Manutenção especializada</option>
+                    <option value="Não lavar (uso descartável)">Não lavar (uso descartável)</option>
+                    <option value="Instruções específicas no manual">Instruções específicas no manual</option>
+                  </select>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">Tamanho: </label>
+                  <select id="inputState" class="form-select" name="text_tamanho">
+                    <option selected disabled value="">Selecione...</option>
+                    <!-- Tamanhos alfabéticos e numéricos -->
+                     <optgroup label="Fardamentos">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                        <option value="3XL">3XL</option>
+                        <option value="4XL">4XL</option>
+                        <option value="Único">Único</option>
+                    </optgroup>
+                    <optgroup label="Botas">
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
+                        <option value="46">46</option>
+                        <option value="47">47</option>
+                        <option value="48">48</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">Quantidade: </label>
+                  <input type="number" class="form-control" name="text_quantidade">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">Fornecedor: </label>
+                  <select id="inputState" class="form-select" name="text_fornecedor">
+                    <option selected disabled value="">Selecione...</option>
+                    <option value="Faumil">Faumil</option>
+                  </select>
+                </div>
+                <div class="col-md-12">
+                  <label for="inputState" class="form-label">Data Aquisicao / Cadastro: </label>
+                  <input type="date" class="form-control" name="text_data_aquisicao">
+                </div>
+
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+              </form><!-- End Multi Columns Form -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+    {{footer}}

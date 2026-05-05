@@ -1,0 +1,269 @@
+<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
+        <!-- Begin page -->
+        <div class="wrapper">
+            <!-- ========== Left Sidebar Start ========== -->
+            {{sidebar}}
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <div class="content">
+                    <!-- Topbar Start -->
+                    {{navbar}}
+                    <!-- end Topbar -->
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">SIGECM</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">Painel Inicial</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Gestão do Armamento</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+                         
+                        <!--
+                            ======================================================
+                            | Modal das Notificacoes
+                            ======================================================
+                        -->
+                        <!-- Scrollable modal -->
+                        <div class="modal fade" id="scrollable-modal" tabindex="-1" role="dialog" aria-labelledby="scrollableModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="scrollableModalTitle">Armas em circulação por mais de 7 dias</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="table-responsive">
+                                            <h5 class="mb-4 text-uppercase"><i
+                                                class="mdi mdi-account-circle me-1"></i>Dados de lavantamento</h5>
+                                            <table class="table table-centered table-nowrap mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Nome Completo</th>
+                                                        <th scope="col">Subunidade</th>
+                                                        <th scope="col">Tipo da arma</th>
+                                                        <th scope="col">Numero da arma</th>
+                                                        <th scope="col">Contacto</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {{expiredWithdraws}}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        <button type="button" class="btn btn-primary">Imprimir</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                        <!--Modal de alteracao da senha-->
+                        <div id="login-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog  modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="myCenterModalLabel">Actualização da senha padrão</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="text-center mt-2 mb-2">
+                                               <span class="account-user-avatar"> 
+                                                    <img src="resources/views/assets/images/users/usermilitary.png" style="width: 100px; height: 100px;" alt="user-image" class="rounded-circle">
+                                                </span>
+                                                <div style="display: flex; flex-direction: column;">
+                                                    <span class="account-user-name"><strong>{{name_utilizador}}</strong></span>
+                                                    <span class="account-position">Utilizador</span>
+                                                </div>
+                                            <h5 class="mt-4">Por favor altere a senha que foi fornecido</h5>
+                                        </div>
+                                        <form method="POST" class="ps-3 pe-3">
+                                            <input type="text" name="text_codigo_utilizador" value="{{codigo_utilizador}}" hidden>
+                                            <div class="mb-3">
+                                                <label for="emailaddress1" class="form-label">Nova senha</label>
+                                                <input class="form-control" type="password"  name="text_password"  required placeholder="Digite a nova senha">
+                                            </div>
+                        
+                                            <div class="mb-3">
+                                                <label for="password1" class="form-label">Repita a senha</label>
+                                                <input class="form-control" type="password" name="text_password_repeat" required placeholder="Repita a senha">
+                                            </div>
+                        
+                                            <div class="mb-3">
+                                                <label class="form-check-label" for="customCheck2">Clique em salvar para guardar a nova senha.</label>
+                                            </div>
+                        
+                                            <div class="mb-3 text-center">
+                                                <button class="btn btn-primary" type="submit">Actualizar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <!--
+                            ======================================================
+                            | Fim Modal das Notificacoes
+                            ======================================================
+                        -->
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card widget-inline">
+                                    <div class="card-body p-0">
+                                        <div class="row g-0">
+                                            <div class="col-sm-6 col-lg-3">
+                                                <div class="card shadow-none m-0">
+                                                    <div class="card-body text-center">
+                                                        <i class="mdi mdi-account-group-outline text-primary" style="font-size: 32px;"></i>
+                                                        <h3><span>{{armas}}</span></h3>
+                                                        <p class="text-muted font-15 mb-0">Total de Armas</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="col-sm-6 col-lg-3">
+                                                <div class="card shadow-none m-0 border-start">
+                                                    <div class="card-body text-center">
+                                                        <i class="mdi mdi-pistol text-primary" style="font-size: 32px;"></i>
+                                                        <h3><span>{{retiradas}}</span></h3>
+                                                        <p class="text-muted font-15 mb-0">Total de Retiradas de Hoje</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="col-sm-6 col-lg-3">
+                                                <div class="card shadow-none m-0 border-start">
+                                                    <div class="card-body text-center">
+                                                        <i class="mdi mdi-clipboard-arrow-down text-primary" style="font-size: 32px;"></i>
+                                                        <h3><span>{{saidas}}</span></h3>
+                                                        <p class="text-muted font-15 mb-0">Total de Devoluções de Hoje</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                            <div class="col-sm-6 col-lg-3">
+                                                <div class="card shadow-none m-0 border-start">
+                                                    <div class="card-body text-center">
+                                                        <i class="mdi mdi-transit-transfer text-primary" style="font-size: 32px;"></i>
+                                                        <h3><span>{{report}}</span> <i class="mdi mdi-arrow-up text-success"></i></h3>
+                                                        <p class="text-muted font-15 mb-0">Em circulação</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                                        </div> <!-- end row -->
+                                    </div>
+                                </div> <!-- end card-box-->
+                            </div> <!-- end col-->
+                        </div>
+                        <!-- end row-->
+
+                        <div class="row">
+                            <div class="col-xxl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <h4 class="header-title mb-0">Ultimas Arrecadações</h4>
+                                            <div>
+                                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                    <option selected>Hoje</option>
+                                                    <option value="1">Ontem</option>
+                                                    <option value="2">Esta semana</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-centered table-nowrap mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Nome Completo</th>
+                                                        <th scope="col">Subunidade</th>
+                                                        <th scope="col">Tipo da Arma</th>
+                                                        <th scope="col">Numero da Arma</th>
+                                                        <th scope="col">Tipo</th>
+                                                        <th scope="col">Assinatura</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {{resumo}}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row-->
+                        <!-- end row -->
+                        <!-- end row-->
+                    </div> <!-- container -->
+                </div> <!-- content -->
+                <!-- Footer Start -->
+               {{footer}}
+                <!-- end Footer -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- END wrapper -->
+
+        <!-- Right Sidebar -->
+        {{rightsidebar}}
+
+        <div class="rightbar-overlay"></div>
+        <!-- /End-bar -->
+
+        {{scriptModal}}
+        {{modalSenha}}
+
+        {{status}}
+
+        <!-- bundle -->
+        <script src="resources/views/assets/js/vendor.min.js"></script>
+        <script src="resources/views/assets/js/app.min.js"></script>
+        <!-- third party js -->
+        <script src="resources/views/assets/js/vendor/chart.min.js"></script>
+        <!-- third party js ends -->
+        <!-- demo app -->
+        <script src="resources/views/assets/js/pages/demo.dashboard-projects.js"></script>
+        <!-- end demo js-->
+         <!-- third party:js -->
+        <script src="resources/views/assets/js/vendor/apexcharts.min.js"></script>
+        <!-- third party end -->
+
+         <!-- demo app -->
+         <script src="resources/views/assets/js/pages/demo.crm-project.js"></script>
+         <!-- end demo js-->
+
+         <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                {{mostrarScriptModal}}
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                {{mostrarModalSenha}}
+            });
+        </script>
+    </body>

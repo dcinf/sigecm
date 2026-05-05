@@ -1,0 +1,656 @@
+<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
+    data-rightbar-onstart="true">
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        {{sidebar}}
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                {{navbar}}
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="{{URL}}/painel">SIGECM</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Gestão do
+                                                Armamento</a></li>
+                                        <li class="breadcrumb-item active">Novo Levantamento</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Novo Levantamento</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                    <!--<div class="row">
+                              <div class="card p-2 ">
+                                  <h5 class="text-uppercase"><i class="mdi mdi-magnify me-1 font-18" ></i>
+                                      Digite o nome completo</h5>
+                                  <div class="col-12">
+                                      <div class="col-lg-12">
+                                          <div class="mb-3">
+                                              <label class="form-label">Nome completo</label>
+                                              <input type="text" class="form-control" data-provide="typeahead" id="prefetch" placeholder="Digite o nome completo">
+                                          </div>
+                                      </div> 
+                                  </div> 
+                              </div>
+                          </div> -->
+
+                    <!--
+                        ==========================================================================
+                        | Modais de erros
+                        ==========================================================================      
+                    -->      
+
+                    <div class="row">
+                        <div id="warning-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body p-4">
+                                        <div class="text-center">
+                                            <i class="dripicons-wrong h1 text-warning"></i>
+                                            <h4 class="mt-2">Erro!</h4>
+                                            <p class="mt-3">Esta arma ja foi alocada a outro funcionario. Reveja o
+                                                numero de serie da arma.</p>
+                                            <button type="button" class="btn btn-warning my-2"
+                                                data-bs-dismiss="modal">Ok</button>
+                                        </div>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+
+                        <div id="danger-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="danger-header-modalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header modal-colored-header bg-danger">
+                                        <h4 class="modal-title" id="danger-header-modalLabel">Atencao</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Este funcionario ja possui uma arma em sua posse que ainda nao devolveu. Por favor verifique a lista de levantamentos e volte a tentar outra vez
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Continuar</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <!--
+                            ==========================================================================
+                            | Modais de erros
+                            ==========================================================================      
+                        --> 
+
+
+
+                        <div class="col-xl-12 col-lg-7">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="text-uppercase"><i class="mdi mdi-magnify me-1 font-18" ></i>
+                                        Digite o nome completo</h5>
+                                    <div class="col-12">
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Nome completo</label>
+                                                <input type="text" class="form-control" data-provide="typeahead" id="prefetch" placeholder="Digite o nome completo">
+                                            </div>
+                                        </div> <!-- end col -->
+                                    </div> <!-- end col -->
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-12 col-lg-7">
+                            <div class="card">
+                                <div class="card-body">
+                                    <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                                        <li class="nav-item">
+                                            <a href="#settings" data-bs-toggle="tab" aria-expanded="false"
+                                                class="nav-link rounded-0 active">
+                                                LEVANTAMENTO
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <!-- end about me section content -->
+                                        <div class="tab-pane show active" id="settings">
+                                            <form method="POST" enctype="multipart/form-data">
+                                                <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Dados Referentes ao Fiel</h5>
+                                                <input type="text" name="text_codigo_funcionario" id="codigo_funcionario" hidden>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="mb-0">
+                                                            <label for="project-overview"
+                                                                class="form-label">Patente</label>
+                                                            <select class="form-control select2" name="text_patente" id="patente" data-toggle="select2">
+                                                                <option>Selecionar</option>
+                                                                <optgroup label="Senhores">
+                                                                    <option value="Senhor">Senhor</option>
+                                                                </optgroup>
+                                                                <optgroup label="Cabos">
+                                                                    <option value="2º Cabo">2º Cabo</option>
+                                                                    <option value="1º Cabo">1º Cabo</option>
+                                                                </optgroup>
+                                                                <optgroup label="Sargentos">
+                                                                    <option value="Furiel">Furiel</option>
+                                                                    <option value="3º Sargento">3º Sargento</option>
+                                                                    <option value="2º Sargento">2º Sargento</option>
+                                                                    <option value="1º Sargento">1º Sargento</option>
+                                                                    <option value="Subintendente">Subintendente</option>
+                                                                    <option value="Intendente">Intendente</option>
+                                                                </optgroup>
+                                                                <optgroup label="Oficiais Subalternos">
+                                                                    <option value="Alferes">Alferes</option>
+                                                                    <option value="Tentente">Tentente</option>
+                                                                    <option value="Capitão">Capitão</option>
+                                                                </optgroup>
+                                                                <optgroup label="Oficiais Superiores">
+                                                                    <option value="Major">Major</option>
+                                                                    <option value="Tentente-Coronel">Tentente-Coronel
+                                                                    </option>
+                                                                    <option value="Coronel">Coronel</option>
+                                                                </optgroup>
+                                                                <optgroup label="Oficiais Generais">
+                                                                    <option value="Brigadeiro">Brigadeiro</option>
+                                                                    <option value="Major-General">Major-General</option>
+                                                                    <option value="Tenente-General">Tenente-General
+                                                                    </option>
+                                                                    <option value="General do Exercito">General do
+                                                                        Exercito</option>
+                                                                </optgroup>>
+                                                            </select>
+                                                            <span class="form-text text-muted"><small>Digite a Patente
+                                                                    do Fiel</small></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="firstname" class="form-label">Nome
+                                                                Completo</label>
+                                                            <input type="text" class="form-control"  name="text_nome_completo"  placeholder="Digite o nome Competo" id="funcionario-nome">
+                                                            <span class="form-text text-muted"><small>Digite o nome
+                                                                    completo do Fiel</small></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="lastname" class="form-label">Subunidade</label>
+                                                            <select class="form-select"  name="text_subunidade" id="subunidade">
+                                                                <option value="">Selecione a Subunidade</option>
+                                                                <option value="Comando da Casa Militar">Comando da Casa
+                                                                    Militar</option>
+                                                                <option value="Regimento de Segurança">Regimento de
+                                                                    Segurança</option>
+                                                                <option value="Regimento de Proteção">Regimento de
+                                                                    Proteção</option>
+                                                            </select>
+                                                            <span class="form-text text-muted"><small>Indique a
+                                                                    subunidade deste Funcionario</small></span>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="firstname" class="form-label">Genero</label>
+                                                            <select class="form-select" name="text_genero" id="gender">
+                                                                <option value="">Selecione um Genero</option>
+                                                                <option value="Masculino">Masculino</option>
+                                                                <option value="Feminino">Feminino</option>
+                                                            </select>
+                                                            <span class="form-text text-muted"><small>Selecione o Genro do Funcionario</small></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="lastname" class="form-label">Departamento</label>
+                                                            <select class="form-select" id="departamento"  name="text_depertamento">
+                                                                <option value="">Selecione um Departamento</option>
+                                                                {{departamento}}
+                                                            </select>
+                                                            <span class="form-text text-muted"><small>Selecione um Departamento</small></span>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="firstname" class="form-label">Contacto</label>
+                                                            <input type="text" class="form-control"  name="text_contacto_fiel" placeholder="Digite o Contacto do Fiel" id="celular">
+                                                            <span class="form-text text-muted"><small>Digite o Contacto
+                                                                    do Fiel</small></span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end col -->
+                                                </div> <!-- end row -->
+
+
+                                                <!-- Dados do armamento -->
+                                                <h5 class="mb-3 text-uppercase bg-light p-2">Opções de retirada</h5>
+                                                <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                                                    <li class="nav-item">
+                                                        <a href="#home1" data-bs-toggle="tab" aria-expanded="false"
+                                                            class="nav-link rounded-0 active">
+                                                            <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                                                            <span class="d-none d-md-block">RETIRAR UMA ARMA</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="#profile1" data-bs-toggle="tab" aria-expanded="true"
+                                                            class="nav-link rounded-0">
+                                                            <i class="mdi mdi-account-circle d-md-none d-block"></i>
+                                                            <span class="d-none d-md-block">RETIRAR VÁRIAS ARMAS</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="tab-content">
+                                                    <div class="tab-pane show active" id="home1">
+                                                        <!-- Dados do armamento -->
+                                                        <input type="hidden" name="text_codigo_armamento"
+                                                            id="text_hiddenArmamento">
+                                                        <input type="hidden" name="text_estado" id="hiddenEstado">
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="mb-3">
+                                                                    <label for="firstname" class="form-label">Numero da
+                                                                        Arma</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="text_numero_serie"
+                                                                        data-provide="typeahead" id="prefetch_weapons"
+                                                                        placeholder="Digite Numero de Serie">
+                                                                    <span class="form-text text-muted"><small>Digite o
+                                                                            numero de serie da arma</small></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="mb-3">
+                                                                    <label for="lastname" class="form-label">Tipo da
+                                                                        Arma</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="text_tipo_arma" id="tipo_arma" readonly>
+                                                                    <span class="form-text text-muted"><small>O tipo da
+                                                                            arma selecionada</small></span>
+                                                                </div>
+                                                            </div> <!-- end col -->
+                                                        </div> <!-- end row -->
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="mb-3">
+                                                                    <label for="userbio" class="form-label">Modelo da Arma</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="text_modelo" id="modelo"
+                                                                        readonly>
+                                                                    <span class="form-text text-muted"><small>Modelo da Arma</small></span>
+                                                                </div>
+                                                            </div> <!-- end col -->
+                                                            <div class="col-md-6">
+                                                                <div class="mb-3">
+                                                                    <label for="lastname" class="form-label">Calibre da
+                                                                        Munição da Arma</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="text_calibre_municao" id="municao"
+                                                                        readonly>
+                                                                    <span class="form-text text-muted"><small>Calibre da
+                                                                            Munição compativel com a arma</small></span>
+                                                                </div>
+                                                            </div> <!-- end col -->
+                                                        </div> <!-- end row -->
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="mb-3">
+                                                                    <label for="firstname" class="form-label">Estado da
+                                                                        Arma</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="text_estado_arma" id="estado_Arma"
+                                                                        readonly>
+                                                                    <span class="form-text text-muted"><small>Estado
+                                                                            referente a arma selecionada</small></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="mb-3">
+                                                                    <label for="userbio" class="form-label">Data da
+                                                                        ultima Inspenção</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="text_data_inspencao" id="data_inspencao"
+                                                                        readonly>
+                                                                    <span class="form-text text-muted"><small>Ultima vez
+                                                                            que a arma foi inspencionada</small></span>
+                                                                </div>
+                                                            </div> <!-- end col -->
+                                                        </div> <!-- end row -->
+                                                    </div>
+                                                    <div class="tab-pane" id="profile1">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="mb-3">
+                                                                    <label for="userbio" class="form-label">Digite o
+                                                                        numero das armas</label>
+                                                                    <select
+                                                                        class="select2 form-control select2-multiple"
+                                                                        data-toggle="select2" multiple="multiple"
+                                                                        name="text_multiple_armas[]"
+                                                                        data-placeholder="Digite numero de cada arma">
+                                                                        <option>Selecionar</option>
+                                                                        {{armamento}}
+                                                                    </select>
+                                                                    <span class="form-text text-muted"><small>Digite o
+                                                                            numero de todas armas a
+                                                                            levantar</small></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-hard-hat me-1"></i>Munições</h5>
+                                                <div class="row" id="inputContainerAmmuniation">
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="companyname" class="form-label">Munição a Retirar</label>
+                                                            <select name="text_municao_retirar[]" class="form-select"
+                                                                id="example-select">
+                                                                <option value="">Selecione a Munição</option>
+                                                                {{municaoItem}}
+                                                            </select>
+                                                            <span class="form-text text-muted"><small>Nome da munição (ex: 9mm, .223 Remington).</small></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="cwebsite" class="form-label">Quantidade</label>
+                                                            <input type="number" name="text_municao_quantidade[]" class="form-control" placeholder="Quantidade de Munições">
+                                                            <span class="form-text text-muted"><small>Quantidade de Munições.</small></span>
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                </div> <!-- end row -->
+                                                <div class="mb-3 text-center">
+                                                    <button type="button"  id="addFieldsAmmuniation" class="btn btn-success"><i class="mdi mdi-content-save"></i> Adicionar Campos</button>
+                                                </div>
+
+
+
+
+
+                                                <!-- <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="companyname"
+                                                                class="form-label">Carregador</label>
+                                                            <input type="number" name="text_carregador_quantidade"
+                                                                class="form-control"
+                                                                placeholder="Quantidade de Carregadores">
+                                                            <span class="form-text text-muted"><small>Digite a
+                                                                    quantidade de Carregadores.</small></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="cwebsite" class="form-label">Carucheira</label>
+                                                            <input type="number" name="text_cartucheira_quantidade"
+                                                                class="form-control" id="cwebsite"
+                                                                placeholder="Quantidade de Cartucheiras">
+                                                            <span class="form-text text-muted"><small>Digite a
+                                                                    quantidade de Carucheiras.</small></span>
+                                                        </div>
+                                                    </div> 
+                                                </div> -->
+
+
+
+
+
+
+
+
+
+
+                                                <!--
+                                                    =============================================================
+                                                    | EQUIPAMENTOS
+                                                    =============================================================
+                                                -->
+                                                <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-hard-hat me-1"></i>Equipamentos a retirar</h5>
+                                                <div class="row" id="inputContainer">
+                                                  <div class="col-md-6">
+                                                      <div class="mb-3">
+                                                          <label for="cwebsite" class="form-label">Selecione o Equipamento</label>
+                                                          <select name="text_equipament[]" class="form-select"
+                                                                id="example-select">
+                                                                <option value="">Selecione o Equipamento</option>
+                                                                {{equipmentItem}}
+                                                            </select>
+                                                            <span class="form-text text-muted"><small>Nome do equipamento (Cartucheira, Coldre, Capacetes, etc).</small></span>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-6">
+                                                    <div class="mb-3">
+                                                      <label for="example-textarea" class="form-label">Quantidade</label>
+                                                      <input type="number" name="text_equipamento_quantidade[]" class="form-control" id="text_equipamento_quantidade"  placeholder="Quantidade do Equipamento">
+                                                      <span class="form-text text-muted"><small>Quantidade do equipamento (Cartucheira, Coldre, Capacetes, etc).</small></span>
+                                                    </div>
+                                                  </div>
+                                                  <!-- end col -->
+                                              </div> <!-- end row -->  
+                                              
+                                              <div class="mb-3 text-center">
+                                                <button type="button"  id="addFields" class="btn btn-success"><i class="mdi mdi-content-save"></i> Adicionar Campos</button>
+                                              </div>
+                                            <!--
+                                                =============================================================
+                                                | FIM EQUIPAMENTOS
+                                                =============================================================
+                                             -->
+
+
+
+
+
+
+
+
+                                                <div class="mb-3">
+                                                    <h5 class="mb-3 text-uppercase bg-light p-2"><i
+                                                            class="mdi mdi-pen me-1"></i> Assinaturas</h5>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="social-fb" class="form-label">Assinatura do
+                                                                    Fiador</label>
+                                                                <div>
+                                                                    <div id="signatureDiv">
+                                                                        <img id="signatureImage" src="#" />
+                                                                        <input type="file" name="signature_image"
+                                                                            id="signatureFile" accept="image/*"
+                                                                            class="form-control" hidden>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="social-tw" class="form-label">Dispositivo de
+                                                                    assinatura</label>
+                                                                <div class="mb-3">
+                                                                    <div>
+                                                                        <button type="button" id="signButton"
+                                                                            onClick="tabletDemo()"
+                                                                            class="btn btn-outline-primary">Assinar</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div> <!-- end col -->
+                                                        </div> <!-- end row -->
+
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button type="submit" class="btn btn-success mt-2"><i
+                                                                class="mdi mdi-content-save"></i> Salvar</button>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                    </div> <!-- end tab-content -->
+                                </div> <!-- end card body -->
+                            </div> <!-- end card -->
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row-->
+                    <!-- end row-->
+                </div>
+                <!-- container -->
+            </div>
+            <!-- content -->
+            <!-- Footer Start -->
+            {{footer}}
+            <!-- end Footer -->
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right Sidebar -->
+    {{rightsidebar}}
+
+    <div class="rightbar-overlay"></div>
+    <!-- /End-bar -->
+
+    <!-- bundle -->
+    <script src="resources/views/assets/js/vendor.min.js"></script>
+    <script src="resources/views/assets/js/app.min.js"></script>
+    <script src="resources/views/assets/js/pages/demo.dashboard.js"></script>
+    <script src="resources/views/assets/js/pages/demo.funcionariosArrecadacao.js"></script>
+    <script src="resources/views/assets/js/pages/demo.weaponsApi.js"></script>
+    <script src="resources/views/assets/js/vendor/handlebars.min.js"></script>
+    <script src="resources/views/assets/js/vendor/typeahead.bundle.min.js"></script>
+
+    <!-- Timepicker -->
+    <script src="resources/views/assets/js/pages/demo.timepicker.js"></script>
+
+    <!-- Wacom Connector-->
+    <script src="resources/views/assets/js/wacomConnector.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+          // Adicionar mais campos
+          $('#addFieldsAmmuniation').click(function () {
+            $('#inputContainerAmmuniation').append(`
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="cwebsite" class="form-label">Munição a Retirar</label>
+                        <select name="text_municao_retirar[]" class="form-select" id="example-select">
+                            <option value="">Selecione a Munição</option>
+                                {{municaoItem}}
+                        </select>
+                        <span class="form-text text-muted"><small>Nome da munição (ex: 9mm, .223 Remington).</small></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="example-textarea" class="form-label">Quantidade</label>
+                        <input type="number" name="text_municao_quantidade[]" class="form-control"  placeholder="Quantidade de Munições">
+                        <span class="form-text text-muted"><small>Quantidade de Munições.</small></span>
+                    </div>
+                </div>
+                <!-- end col -->  
+            `);
+          });
+        });
+        </script>
+
+
+    <script>
+        $(document).ready(function () {
+          // Adicionar mais campos
+          $('#addFields').click(function () {
+            $('#inputContainer').append(`
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="cwebsite" class="form-label">Selecione o Equipamento</label>
+                        <select name="text_equipament[]" class="form-select" id="example-select">
+                            <option value="">Selecione o Equipamento</option>
+                                {{equipmentItem}}
+                        </select>
+                        <span class="form-text text-muted"><small>Nome do equipamento (Cartucheira, Coldre, Capacetes, etc).</small></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="example-textarea" class="form-label">Quantidade</label>
+                        <input type="number" name="text_equipamento_quantidade[]" class="form-control" id="text_equipamento_quantidade"  placeholder="Quantidade do Equipamento">
+                        <span class="form-text text-muted"><small>Quantidade do equipamento (Cartucheira, Coldre, Capacetes, etc).</small></span>
+                    </div>
+                </div>
+                <!-- end col -->  
+            `);
+          });
+        });
+        </script>
+
+    <script>
+        // Função para verificar a URL e abrir o modal
+        window.onload = function () {
+            // Verificar se o parâmetro "showModal=true" está presente na URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('status') && urlParams.get('status') === 'error_serie') {
+                // Abrir o modal se a condição for verdadeira
+                var myModal = new bootstrap.Modal(document.getElementById('warning-alert-modal'));
+                myModal.show();
+            }else if (urlParams.has('status') && urlParams.get('status') === 'error_funcionario'){
+                // Abrir o modal se a condição for verdadeira
+                var myModal = new bootstrap.Modal(document.getElementById('danger-header-modal'));
+                myModal.show();
+            }
+        }
+    </script>
+</body>

@@ -1,0 +1,364 @@
+<style>
+    .daterangepicker {
+        z-index: 10500 !important;
+    }
+</style>
+
+<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
+    data-rightbar-onstart="true">
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        {{sidebar}}
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                {{navbar}}
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">SIGECM</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Relatorios</a></li>
+                                        <li class="breadcrumb-item active">Relatorio dos Equipamentos</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Relatorio dos Equipamentos</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+
+
+                    <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog"
+                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header modal-colored-header bg-primary">
+                                    <h4 class="modal-title" id="primary-header-modalLabel">Filtro de Busca</h4>
+                                    <button type="button" class="btn-close" style="color: #ffff;"
+                                        data-bs-dismiss="modal" aria-hidden="true"></button>
+                                </div>
+
+                                <form id="myForm" method="POST">
+                                    <div class="modal-body ps-3 pe-3">
+
+                                        <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                                            <li class="nav-item">
+                                                <a href="#home1" data-bs-toggle="tab" aria-expanded="false"
+                                                    class="nav-link rounded-0 active">
+                                                    <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                                                    <span class="d-none d-md-block">Sem Filto</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#profile1" data-bs-toggle="tab" aria-expanded="true"
+                                                    class="nav-link rounded-0">
+                                                    <i class="mdi mdi-account-circle d-md-none d-block"></i>
+                                                    <span class="d-none d-md-block">Filtrar</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="home1">
+                                                <p>A clicar no botao gerar relatorio vai geral um relatorio geral dos
+                                                    Equipamentos com todos os Equipamentos. Caso queira um relatrios
+                                                    especifico clique em filtrar.</p>
+                                            </div>
+                                            <div class="tab-pane" id="profile1">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Tipo do Equipamento</label>
+                                                    <div class="input-group flex-nowrap">
+                                                        <span class="input-group-text" id="basic-addon1">Tipo do
+                                                            Equipamento</span>
+                                                        <select name="text_tipo_equipamento" class="form-select"
+                                                            id="tipo_equipamento">
+                                                            <option value="">Selecione o Tipo de Equipamento</option>
+                                                            <option value="Proteção pessoal">Proteção Pessoal</option>
+                                                            <option value="Armazenamento e transporte">Armazenamento e
+                                                                Transporte</option>
+                                                            <option value="Armamento">Armamento</option>
+                                                            <option value="Suporte e logística">Suporte e Logística
+                                                            </option>
+                                                            <option value="Treinamento">Treinamento</option>
+                                                            <option value="Defesa e ataque">Defesa e Ataque</option>
+                                                            <option value="Equipamento auxiliar">Equipamento Auxiliar
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="form-text text-muted"><small>Os diferentes tipos de
+                                                            equipamentos que podem ser cadastrados.</small></span>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label class="form-label">Equipamento especifico</label>
+                                                    <select name="text_nome_equipamento" class="form-select"
+                                                        id="nome_equipamento">
+                                                        <option value="">Selecione o Equipamento</option>
+
+                                                        <!-- Proteção Pessoal -->
+                                                        <optgroup label="Proteção Pessoal">
+                                                            <option value="Capacete balistico">Capacete Balístico
+                                                            </option>
+                                                            <option value="Colete a prova de balas">Colete à prova de
+                                                                balas</option>
+                                                            <option value="Mascara de gas">Máscara de gás</option>
+                                                            <option value="Oculos balistico">Óculos balísticos</option>
+                                                            <option value="Protetores de ouvido">Protetores de ouvido
+                                                            </option>
+                                                            <option value="Luvas taticas">Luvas táticas</option>
+                                                            <option value="Botas taticas">Botas táticas</option>
+                                                            <option value="Protetores faciais">Protetores faciais
+                                                            </option>
+                                                            <option value="Colete de carga">Colete de carga</option>
+                                                        </optgroup>
+
+                                                        <!-- Armazenamento e Transporte -->
+                                                        <optgroup label="Armazenamento e Transporte">
+                                                            <option value="Carregador">Carregador</option>
+                                                            <option value="Cartucheira">Cartucheira</option>
+                                                            <option value="Bolsas de municao">Bolsas de munição</option>
+                                                            <option value="Cinto de municao">Cinto de munição</option>
+                                                            <option value="Bolsas taticas">Bolsas táticas</option>
+                                                            <option value="Caixa de municao">Caixa de munição</option>
+                                                            <option value="Pochetes taticas">Pochetes táticas</option>
+                                                            <option value="Mochila de hidratacao">Mochila de hidratação
+                                                            </option>
+                                                        </optgroup>
+
+                                                        <!-- Armamento -->
+                                                        <optgroup label="Armamento">
+                                                            <option value="Suporte para arma">Suporte para arma (bipé,
+                                                                trípode)</option>
+                                                            <option value="Silenciador">Silenciador</option>
+                                                            <option value="Lentes de mira">Lentes de mira</option>
+                                                            <option value="Luzes taticas">Luzes táticas</option>
+                                                            <option value="Lunetas de mira">Lunetas de mira</option>
+                                                            <option value="Miras holograficas">Miras holográficas
+                                                            </option>
+                                                            <option value="Lanterna tatica">Lanterna tática</option>
+                                                            <option value="Capacete com montagem para mira">Capacete com
+                                                                montagem para mira</option>
+                                                        </optgroup>
+                                                        <!-- Suporte e Logística -->
+                                                        <optgroup label="Suporte e Logística">
+                                                            <option value="Gerador portatil">Gerador portátil</option>
+                                                            <option value="Kit de primeiros socorros">Kit de primeiros
+                                                                socorros</option>
+                                                            <option value="Ferramentas multiuso">Ferramentas multiuso
+                                                            </option>
+                                                            <option value="Corda tatica">Corda tática</option>
+                                                            <option value="Pas e machados">Pás e machados</option>
+                                                            <option value="Barracas de campanha">Barracas de campanha
+                                                            </option>
+                                                            <option value="Fogareiro tatico">Fogareiro tático</option>
+                                                            <option value="Filtro de agua portatil">Filtro de água
+                                                                portátil</option>
+                                                        </optgroup>
+
+                                                        <!-- Treinamento -->
+                                                        <optgroup label="Treinamento">
+                                                            <option value="Alvo de treino">Alvo de treino</option>
+                                                            <option value="Proteção para treino">Proteção para treino
+                                                            </option>
+                                                            <option value="Simulador de tiro">Simuladores de tiro
+                                                            </option>
+                                                            <option value="Colete de treino">Coletes de treino</option>
+                                                        </optgroup>
+
+                                                        <!-- Defesa e Ataque -->
+                                                        <optgroup label="Defesa e Ataque">
+                                                            <option value="Escudo balistico">Escudo balístico</option>
+                                                            <option value="Armadura de protecao">Armadura de proteção
+                                                            </option>
+                                                            <option value="Granada de treino">Granada de treino</option>
+                                                            <option value="Rpg">RPG (Lança-rojões)</option>
+                                                        </optgroup>
+
+                                                        <!-- Equipamento Auxiliar -->
+                                                        <optgroup label="Equipamento Auxiliar">
+                                                            <option value="Kit de sobrevivencia">Kit de sobrevivência
+                                                            </option>
+                                                            <option value="Oculos de visao noturna">Óculos de visão
+                                                                noturna</option>
+                                                            <option value="Mascara de oxigenio">Máscara de oxigênio
+                                                            </option>
+                                                            <option value="Arco e flecha taticos">Arco e flecha táticos
+                                                            </option>
+                                                            <option value="Drone de vigilancia">Drone de vigilância
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+
+                                                    <span class="form-text text-muted"><small>Tipo de equipamentos e sua
+                                                            classificacao.</small></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light"
+                                            data-bs-dismiss="modal">Sair</button>
+                                        <button type="submit" class="btn btn-primary">Gerar Relatorio</button>
+                                    </div>
+                                </form>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row mb-2">
+                                        <div class="col-sm-5">
+
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <div class="text-sm-end">
+                                                <button type="button" class="btn btn-success mb-2 me-1"><i
+                                                        class="mdi mdi-cog-outline"></i></button>
+                                                <button type="button" class="btn btn-light mb-2" data-bs-toggle="modal"
+                                                    data-bs-target="#bs-example-modal-lg"><i class="mdi mdi-printer"
+                                                        style="font-size: 16px;"></i> Imprimir</button>
+                                                <button type="button" class="btn btn-light mb-2">Export</button>
+                                            </div>
+                                        </div><!-- end col-->
+                                    </div>
+
+                                    <!-- 
+                                        #================================================
+                                        # Modal de notificacoes
+                                        #================================================
+                                    -->
+                                    <div id="info-alert-modal" class="modal fade" tabindex="-1" role="dialog"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body p-4">
+                                                    <div class="text-center">
+                                                        <i class="dripicons-checkmark h1"></i>
+                                                        <h4 class="mt-2">Sucesso!</h4>
+                                                        <p class="mt-3">A nova arma foi registada com sucesso.</p>
+                                                        <button type="button" class="btn btn-info my-2"
+                                                            data-bs-dismiss="modal">ok</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 
+                                        #================================================
+                                        # Fim Modal de notificacoes
+                                        #================================================
+                                    -->
+
+                                    <div class="table-responsive">
+                                        <table class="table table-centered w-100 dt-responsive nowrap"
+                                            id="products-datatable">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th class="all" style="width: 20px;">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="customCheck1">
+                                                            <label class="form-check-label"
+                                                                for="customCheck1">&nbsp;</label>
+                                                        </div>
+                                                    </th>
+                                                    <th class="all">#Codigo</th>
+                                                    <th>Nome do Equipamento</th>
+                                                    <th>Tipo do Equipamento</th>
+                                                    <th>Cor</th>
+                                                    <th>Finalidade</th>
+                                                    <th>Quantidade em Estoque</th>
+                                                    <th style="width: 85px;">Acções</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{itens}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                    <!-- end row -->
+
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+
+            <!-- Footer Start -->
+            {{footer}}
+            <!-- end Footer -->
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+
+    <!-- Right Sidebar -->
+    {{rightsidebar}}
+
+    <div class="rightbar-overlay"></div>
+    <!-- /End-bar -->
+
+
+    <!-- bundle -->
+    <script src="resources/views/assets/js/vendor.min.js"></script>
+    <script src="resources/views/assets/js/app.min.js"></script>
+
+    <!-- third party js -->
+    <script src="resources/views/assets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="resources/views/assets/js/vendor/dataTables.bootstrap5.js"></script>
+    <script src="resources/views/assets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="resources/views/assets/js/vendor/responsive.bootstrap5.min.js"></script>
+    <script src="resources/views/assets/js/vendor/dataTables.checkboxes.min.js"></script>
+
+    <!-- third party js ends -->
+
+    <!-- demo app -->
+    <script src="resources/views/assets/js/pages/demo.types.js"></script>
+    <!-- end demo js-->
+
+    <script>
+        // Função para verificar a URL e abrir o modal
+        window.onload = function () {
+            // Verificar se o parâmetro "showModal=true" está presente na URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('status') && urlParams.get('status') === 'created') {
+                // Abrir o modal se a condição for verdadeira
+                var myModal = new bootstrap.Modal(document.getElementById('info-alert-modal'));
+                myModal.show();
+            }
+        }
+    </script>
+
+
+</body>

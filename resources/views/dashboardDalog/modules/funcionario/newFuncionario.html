@@ -1,0 +1,178 @@
+{{navbar}}
+{{sidebar}}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Funcionarios</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{URL}}/painel">Pagina Inicial</a></li>
+        <li class="breadcrumb-item">Funcionarios</li>
+        <li class="breadcrumb-item active">Novo Funcionario</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Formulario de Cadastro</h5>
+
+            <!-- Multi Columns Form -->
+            <form class="row g-3" method="POST">
+              <div class="col-md-4">
+                <label for="inputState" class="form-label">Patente</label>
+                <select id="inputState" class="form-select" name="text_patente" id="patente" data-toggle="select2">
+                  <option>Selecionar</option>
+                  <optgroup label="Senhores">
+                    <option value="Senhor">Senhor</option>
+                  </optgroup>
+                  <optgroup label="Cabos">
+                    <option value="2º Cabo">2º Cabo</option>
+                    <option value="1º Cabo">1º Cabo</option>
+                  </optgroup>
+                  <optgroup label="Sargentos">
+                    <option value="Furiel">Furiel</option>
+                    <option value="3º Sargento">3º Sargento</option>
+                    <option value="2º Sargento">2º Sargento</option>
+                    <option value="1º Sargento">1º Sargento</option>
+                    <option value="Subintendente">Subintendente</option>
+                    <option value="Intendente">Intendente</option>
+                  </optgroup>
+                  <optgroup label="Oficiais Subalternos">
+                    <option value="Alferes">Alferes</option>
+                    <option value="Tentente">Tentente</option>
+                    <option value="Capitão">Capitão</option>
+                  </optgroup>
+                  <optgroup label="Oficiais Superiores">
+                    <option value="Major">Major</option>
+                    <option value="Tentente-Coronel">Tentente-Coronel
+                    </option>
+                    <option value="Coronel">Coronel</option>
+                  </optgroup>
+                  <optgroup label="Oficiais Generais">
+                    <option value="Brigadeiro">Brigadeiro</option>
+                    <option value="Major-General">Major-General</option>
+                    <option value="Tenente-General">Tenente-General
+                    </option>
+                    <option value="General do Exercito">General do
+                      Exercito</option>
+                  </optgroup>>
+                </select>
+              </div>
+              <div class="col-md-8">
+                <label for="inputPassword5" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" name="text_nome_completo" placeholder="Nome Completo">
+              </div>
+              <div class="col-md-6">
+                <label for="inputState" class="form-label">Subunidade</label>
+                <select class="form-select" name="text_subunidade">
+                  <option value="">Selecione a Subunidade</option>
+                  <option value="Comando da Casa Militar">Comando da Casa
+                    Militar</option>
+                  <option value="Regimento de Segurança">Regimento de
+                    Segurança</option>
+                  <option value="Regimento de Proteção">Regimento de
+                    Proteção</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="inputState" class="form-label">Genero</label>
+                <select class="form-select" name="text_genero">
+                  <option value="">Selecione um Genero</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Feminino">Feminino</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="inputState" class="form-label">Departamento</label>
+                <select class="form-select" name="text_codigo_departamento">
+                  <option value="">Selecione um Departamento</option>
+                  {{departamento}}
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="inputPassword5" class="form-label">Contacto</label>
+                <input type="text" class="form-control" name="text_contacto" placeholder="Contacto">
+              </div>
+
+              <div class="col-md-4">
+                <label for="inputName5" class="form-label">Tamanho da calca</label>
+                <select id="inputState" class="form-select" name="text_tamanho_calca">
+                    <option selected disabled value="">Selecione...</option>
+                    <!-- Tamanhos alfabéticos e numéricos -->
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                    <option value="3XL">3XL</option>
+                    <option value="4XL">4XL</option>
+                    <option value="Único">Único</option>
+                  </select>
+              </div>
+              <div class="col-md-4">
+                <label for="inputName5" class="form-label">Tamanho da Camisa</label>
+                <select id="inputState" class="form-select" name="text_tamanho_camisa">
+                    <option selected disabled value="">Selecione...</option>
+                    <!-- Tamanhos alfabéticos e numéricos -->
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                    <option value="3XL">3XL</option>
+                    <option value="4XL">4XL</option>
+                    <option value="Único">Único</option>
+                  </select>
+              </div>
+              <div class="col-md-4">
+                <label for="inputName5" class="form-label">Tamanho da Bota</label>
+                <select id="inputState" class="form-select" name="text_tamanho_Bota">
+                    <option selected disabled value="">Selecione...</option>
+                    <!-- Tamanhos alfabéticos e numéricos -->
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                    <option value="46">46</option>
+                    <option value="47">47</option>
+                    <option value="48">48</option>
+                  </select>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+              </div>
+            </form><!-- End Multi Columns Form -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+{{footer}}

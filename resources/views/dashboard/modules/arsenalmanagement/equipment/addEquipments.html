@@ -1,0 +1,252 @@
+<body class="loading" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid"
+    data-rightbar-onstart="true">
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Left Sidebar Start ========== -->
+        {{sidebar}}
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <div class="content">
+                <!-- Topbar Start -->
+                {{navbar}}
+                <!-- end Topbar -->
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="{{URL}}/painel">SIGECM</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Gestão do
+                                                Armamento</a></li>
+                                        <li class="breadcrumb-item active">Reabastecer Equipamentos</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Reabastecer Equipamentos</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                    <!--<div class="row">
+                              <div class="card p-2 ">
+                                  <h5 class="text-uppercase"><i class="mdi mdi-magnify me-1 font-18" ></i>
+                                      Digite o nome completo</h5>
+                                  <div class="col-12">
+                                      <div class="col-lg-12">
+                                          <div class="mb-3">
+                                              <label class="form-label">Nome completo</label>
+                                              <input type="text" class="form-control" data-provide="typeahead" id="prefetch" placeholder="Digite o nome completo">
+                                          </div>
+                                      </div> 
+                                  </div> 
+                              </div>
+                          </div> -->
+
+                    <!--
+                        ==========================================================================
+                        | Modais de erros
+                        ==========================================================================      
+                    -->      
+
+                    <div class="row">
+
+                        <div id="danger-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="danger-header-modalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header modal-colored-header bg-danger">
+                                        <h4 class="modal-title" id="danger-header-modalLabel">Atencao</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Os campos nao podem estar vazios. Verifique os campos e volte a tentar novamente.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Continuar</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+
+                        <div id="info-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body p-4">
+                                        <div class="text-center">
+                                            <i class="dripicons-checkmark h1"></i>
+                                            <h4 class="mt-2">Sucesso!</h4>
+                                            <p class="mt-3">A Estoque foi actualizdo com sucesso.</p>
+                                            <a href="{{URL}}/painel" type="button" class="btn btn-info my-2" data-bs-dismiss="modal">Continuar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--
+                            ==========================================================================
+                            | Modais de erros
+                            ==========================================================================      
+                        --> 
+
+                        <div class="col-xl-12 col-lg-7">
+                            <div class="card">
+                                <div class="card-body">
+                                    <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
+                                        <li class="nav-item">
+                                            <a href="#settings" data-bs-toggle="tab" aria-expanded="false"
+                                                class="nav-link rounded-0 active">
+                                                REABASTECER EQUIPAMENTOS
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <!-- end about me section content -->
+                                        <div class="tab-pane show active" id="settings">
+                                            <form method="POST" enctype="multipart/form-data">    
+                                                <!-- Dados da Municao -->
+                                                <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-hard-hat me-1"></i>Equipamentos</h5>
+                                                
+                                                
+                                                  <!--
+                                                    =============================================================
+                                                    | EQUIPAMENTOS
+                                                    =============================================================
+                                                -->
+                                                <div class="row" id="inputContainer">
+                                                  <div class="col-md-6">
+                                                      <div class="mb-3">
+                                                          <label for="cwebsite" class="form-label">Selecione o Equipamento</label>
+                                                          <select name="text_equipament_actualizar[]" class="form-select"
+                                                                id="example-select">
+                                                                <option value="">Selecione o Equipamento</option>
+                                                                {{equipmentItem}}
+                                                            </select>
+                                                            <span class="form-text text-muted"><small>Nome do equipamento (Cartucheira, Coldre, Capacetes, etc).</small></span>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-6">
+                                                    <div class="mb-3">
+                                                      <label for="example-textarea" class="form-label">Quantidade</label>
+                                                      <input type="number" name="text_equipamento_quantidade_actualizar[]" class="form-control" id="text_equipamento_quantidade"  placeholder="Quantidade do Equipamento">
+                                                      <span class="form-text text-muted"><small>Quantidade do equipamento (Cartucheira, Coldre, Capacetes, etc).</small></span>
+                                                    </div>
+                                                  </div>
+                                                  <!-- end col -->
+                                              </div> <!-- end row -->  
+                                              
+                                              <div class="mb-3 text-center">
+                                                <button type="button"  id="addFields" class="btn btn-info"><i class="mdi mdi-content-save"></i> Adicionar Campos</button>
+                                              </div>
+                                            <!--
+                                                =============================================================
+                                                | FIM EQUIPAMENTOS
+                                                =============================================================
+                                             -->
+                                                <div class="mb-3">
+                                                    <h5 class="mb-3 text-uppercase bg-light p-2"><i
+                                                            class="mdi mdi-pen me-1"></i> Depois de feita a adição das quantidades, por favor, clique em Salvar e Actualizar Estoque.</h5>
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-success mt-2"><i
+                                                                class="mdi mdi-content-save"></i> Salvar e Actualizar Estoque</button>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                    </div> <!-- end tab-content -->
+                                </div> <!-- end card body -->
+                            </div> <!-- end card -->
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row-->
+                    <!-- end row-->
+                </div>
+                <!-- container -->
+            </div>
+            <!-- content -->
+            <!-- Footer Start -->
+            {{footer}}
+            <!-- end Footer -->
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right Sidebar -->
+    {{rightsidebar}}
+
+    <div class="rightbar-overlay"></div>
+    <!-- /End-bar -->
+
+    <!-- bundle -->
+    <script src="resources/views/assets/js/vendor.min.js"></script>
+    <script src="resources/views/assets/js/app.min.js"></script>
+    <script src="resources/views/assets/js/pages/demo.dashboard.js"></script>
+    <script src="resources/views/assets/js/pages/demo.funcionariosArrecadacao.js"></script>
+    <script src="resources/views/assets/js/pages/demo.weaponsApi.js"></script>
+    <script src="resources/views/assets/js/vendor/handlebars.min.js"></script>
+    <script src="resources/views/assets/js/vendor/typeahead.bundle.min.js"></script>
+
+    <!-- Timepicker -->
+    <script src="resources/views/assets/js/pages/demo.timepicker.js"></script>
+
+    <!-- Wacom Connector-->
+    <script src="resources/views/assets/js/wacomConnector.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+          // Adicionar mais campos
+          $('#addFields').click(function () {
+            $('#inputContainer').append(`
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="cwebsite" class="form-label">Selecione o Equipamento</label>
+                        <select name="text_equipament_actualizar[]" class="form-select" id="example-select">
+                            <option value="">Selecione o Equipamento</option>
+                                {{equipmentItem}}
+                        </select>
+                        <span class="form-text text-muted"><small>Nome do equipamento (Cartucheira, Coldre, Capacetes, etc).</small></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="example-textarea" class="form-label">Quantidade</label>
+                        <input type="number" name="text_equipamento_quantidade_actualizar[]" class="form-control" id="text_equipamento_quantidade"  placeholder="Quantidade do Equipamento">
+                        <span class="form-text text-muted"><small>Quantidade do equipamento (Cartucheira, Coldre, Capacetes, etc).</small></span>
+                    </div>
+                </div>
+                <!-- end col -->  
+            `);
+          });
+        });
+        </script>
+
+
+
+    <script>
+        // Função para verificar a URL e abrir o modal
+        window.onload = function () {
+            // Verificar se o parâmetro "showModal=true" está presente na URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('status') && urlParams.get('status') === 'updated') {
+                // Abrir o modal se a condição for verdadeira
+                var myModal = new bootstrap.Modal(document.getElementById('info-alert-modal'));
+                myModal.show();
+            }else if (urlParams.has('status') && urlParams.get('status') === 'error_update'){
+                // Abrir o modal se a condição for verdadeira
+                var myModal = new bootstrap.Modal(document.getElementById('danger-header-modal'));
+                myModal.show();
+            }
+        }
+    </script>
+
+</body>

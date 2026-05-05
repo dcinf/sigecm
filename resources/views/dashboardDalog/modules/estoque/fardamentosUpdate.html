@@ -1,0 +1,92 @@
+{{navbar}}
+{{sidebar}}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Actualizacao de Estoque</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{URL}}/painel">Pagina Inicial</a></li>
+                <li class="breadcrumb-item">Gestão de Estoque</li>
+                <li class="breadcrumb-item active">Fardamentos</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Reabastecimento dos Fardamentos</h5>
+
+                        <!-- Multi Columns Form -->
+                        <form class="row g-3" method="POST">
+                            <div class="row mt-4 mb-4" id="inputContainer">
+                                <div class="col-md-6 mb-4">
+                                    <label for="inputState" class="form-label">Artigo | Cor | Tamanho</label>
+                                    <select id="inputState" class="form-select" name="text_artigo[]"
+                                        data-toggle="select2">
+                                        <option>Selecionar</option>
+                                        {{selectItem}}
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label for="inputPassword5" class="form-label">Quantidade</label>
+                                    <input type="text" class="form-control" name="text_quantidade[]"
+                                        placeholder="Quantidade a adicionar...">
+                                </div>
+                            </div>
+
+                            <div class="mb-3 text-center">
+                                <button type="button" id="addFields" class="btn btn-info">Adicionar campos</button>
+                            </div>
+
+
+                            <div class="text-center">
+                                <h6 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-pen me-1"></i> Depois de
+                                    feita a adição das quantidades, por favor, clique em Salvar e Actualizar Estoque.
+                                </h6>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                        </form><!-- End Multi Columns Form -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+{{footer}}
+
+{{status}}
+
+
+<script>
+    $(document).ready(function () {
+        // Adicionar mais campos
+        $('#addFields').click(function () {
+            $('#inputContainer').append(`
+                <div class="col-md-6 mb-4">
+                    <label for="inputState" class="form-label">Artigo | Cor | Tamanho</label>
+                    <select id="inputState" class="form-select" name="text_artigo[]"
+                        data-toggle="select2">
+                        <option>Selecionar</option>
+                                {{selectItem}}
+                    </select>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label for="inputPassword5" class="form-label">Quantidade</label>
+                    <input type="text" class="form-control" name="text_quantidade[]"
+                    placeholder="Quantidade a adicionar...">
+                </div>
+                <!-- end col -->  
+            `);
+        });
+    });
+</script>

@@ -1,0 +1,154 @@
+{{navbar}}
+{{sidebar}}
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Gestão de Utilizadores da Repartição</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{URL}}/painel">Pagina Inicial</a></li>
+        <li class="breadcrumb-item">Gestão de Utilizadores da Repartição</li>
+        <li class="breadcrumb-item active">Registar Utilizador</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Formulario de Cadastro</h5>
+
+            <!-- Multi Columns Form -->
+            <form class="row g-3" method="POST">
+              <div class="col-md-4">
+                <label for="inputState" class="form-label">Patente</label>
+                <select id="inputState" class="form-select" name="text_patente" id="patente" data-toggle="select2">
+                  <option>Selecionar</option>
+                  <optgroup label="Senhores">
+                    <option value="Senhor">Senhor</option>
+                  </optgroup>
+                  <optgroup label="Cabos">
+                    <option value="2º Cabo">2º Cabo</option>
+                    <option value="1º Cabo">1º Cabo</option>
+                  </optgroup>
+                  <optgroup label="Sargentos">
+                    <option value="Furiel">Furiel</option>
+                    <option value="3º Sargento">3º Sargento</option>
+                    <option value="2º Sargento">2º Sargento</option>
+                    <option value="1º Sargento">1º Sargento</option>
+                    <option value="Subintendente">Subintendente</option>
+                    <option value="Intendente">Intendente</option>
+                  </optgroup>
+                  <optgroup label="Oficiais Subalternos">
+                    <option value="Alferes">Alferes</option>
+                    <option value="Tentente">Tentente</option>
+                    <option value="Capitão">Capitão</option>
+                  </optgroup>
+                  <optgroup label="Oficiais Superiores">
+                    <option value="Major">Major</option>
+                    <option value="Tentente-Coronel">Tentente-Coronel
+                    </option>
+                    <option value="Coronel">Coronel</option>
+                  </optgroup>
+                  <optgroup label="Oficiais Generais">
+                    <option value="Brigadeiro">Brigadeiro</option>
+                    <option value="Major-General">Major-General</option>
+                    <option value="Tenente-General">Tenente-General
+                    </option>
+                    <option value="General do Exercito">General do
+                      Exercito</option>
+                  </optgroup>>
+                </select>
+                <span class="form-text text-muted"><small>Digite a Patente do Operador</small></span>
+              </div>
+              <div class="col-md-8">
+                <label for="inputPassword5" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" name="text_nome_completo" placeholder="Nome Completo">
+                <span class="form-text text-muted"><small>Digite o nome completo do Operador</small></span>
+              </div>
+              <div class="col-md-6">
+                <label for="inputState" class="form-label">Subunidade</label>
+                <select class="form-select" name="text_subunidade">
+                  <option value="">Selecione a Subunidade</option>
+                  <option value="Comando da Casa Militar">Comando da Casa
+                    Militar</option>
+                  <option value="Regimento de Segurança">Regimento de
+                    Segurança</option>
+                  <option value="Regimento de Proteção">Regimento de
+                    Proteção</option>
+                </select>
+                 <span class="form-text text-muted"><small>Indique a subunidade deste Funcionario</small></span>
+              </div>
+
+              <div class="col-md-6">
+                <label for="inputState" class="form-label">Genero</label>
+                <select class="form-select" name="text_genero">
+                  <option value="">Selecione um Genero</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Feminino">Feminino</option>
+                </select>
+                <span class="form-text text-muted"><small>Selecione o Genro do Funcionario</small></span>
+              </div>
+
+              <div class="col-md-4">
+                <label for="inputState" class="form-label">Departamento</label>
+                <select class="form-select" name="text_codigo_departamento">
+                  <option value="">Selecione um Departamento</option>
+                  {{departamento}}
+                </select>
+                <span class="form-text text-muted"><small>Selecione um Departamento</small></span>
+              </div>
+
+              <div class="col-md-4">
+                <label for="inputPassword5" class="form-label">Contacto</label>
+                <input type="text" class="form-control" name="text_celular" data-toggle="input-mask" data-mask-format="00-000-0000" required>
+                <span class="font-13 text-muted" required>e.g "xx-xxx-xxxx"</span>
+              </div>
+
+               <div class="col-md-4">
+                <label for="inputPassword5" class="form-label">Contacto Alternativo</label>
+                <input type="text" class="form-control" name="text_celular_alt" data-toggle="input-mask" data-mask-format="00-000-0000">
+                <span class="font-13 text-muted">e.g "xx-xxx-xxxx"</span>
+              </div>
+
+              <div class="col-md-3">
+                <label for="firstname" class="form-label">Nome</label>
+                <input type="text" class="form-control"  name="text_nome"  placeholder="Digite o Primeiro Nome" required>
+                <span class="form-text text-muted"><small>Digite o Primeiro Nome </small></span>
+              </div>
+              <div class="col-md-3">
+                <label for="firstname" class="form-label">Apelido</label>
+                <input type="text" class="form-control"  name="text_apelido"  placeholder="Digite o Apelido" required>
+                <span class="form-text text-muted"><small>Digite o Apelido </small></span>
+              </div>
+              <div class="col-md-3">
+                <label for="firstname" class="form-label">Grupo do Utilizador</label>
+                <select class="form-select" name="text_grupo">
+                    <option value="{{codigo_grupo}}" selected>{{grupo}}</option>
+                </select>
+                <span class="form-text text-muted"><small>Selecione o Grupo do Funcionario</small></span>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Senha de Acesso</label>
+                <input type="text" name="text_senha_acesso" class="form-control" value="123456789" readonly disabled>
+              </div>
+              <h5 class="mb-3  bg-light p-2"><i class="mdi mdi-office-building me-1"></i> 
+                INFO: Depois de verificadas as Informacoes clique em salvar</h5>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </div>
+            </form><!-- End Multi Columns Form -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+{{footer}}

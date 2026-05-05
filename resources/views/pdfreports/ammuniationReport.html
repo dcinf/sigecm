@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatorio</title>
+    <style>
+        body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px; /* aumenta o tamanho do logo */
+            height: 100%;
+            background-image: url("http://localhost:8888/sigecm/resources/views/assets/images/emblema.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: translate(-50%, -50%);
+            opacity: 0.1; /* reduz a opacidade */
+            z-index: -1;
+        }
+
+        .cabecalho {
+            width: 100%;
+            text-align: center; /* Centering the content */
+            margin-bottom: 20px; /* Optional: adds space below the header */
+        }
+
+        .cabecalho_logo {
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .logo_page {
+            max-width: 40px; 
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .cabecalho_info {
+            margin-top: 5px;
+        }
+
+        .cabecalho_info h6,
+        .cabecalho_info p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cabecalho_info h6 {
+            text-transform: uppercase;
+            font-size: 17px;
+            padding-bottom: 5px;
+            font-weight: 400;
+        }
+
+        .cabecalho_info .divisor_row{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+
+        .cabecalho_info .divisor_row .divisor{
+            width: 100px;
+            height: 2px;
+            margin: 0 43%;
+            border-bottom: 2px solid #000;
+        }
+
+        .cabecalho_info h3{
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+            font-size: 22px;
+            padding-top: 5px;
+        }
+
+        .cabecalho_info h4{
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+            font-size: 17px;
+            padding-top: 5px;
+        }
+
+        .titulo_documento h4{
+            text-align: justify;
+            line-height: 1.6; 
+            font-weight: 400;
+            font-size: 17px;
+        }
+
+        .subtitulo_documento{
+            width: 100%;
+            margin-bottom: -30px;
+            margin-top: -20px;
+        }
+
+        .subtitulo_documento h4{
+            background-color: #d6d6d6;
+            padding: 10px;
+        }
+        
+
+
+        .titulo_documento .line{
+            width: 100%;
+            border-top: 1px solid #ccc;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        #customers {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #000;
+            padding: 8px;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #ddd;
+            color: #000;
+        }
+
+        .titulo_documento strong{
+            text-decoration: underline;
+            padding: 10px;
+        }
+
+        li{
+            padding-top: 4px;
+        }
+
+        .contador_total{
+            float: right;
+        }
+
+        .footer__division{
+            width: 100%;
+            font-size: 10px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="cabecalho">
+        <div class="cabecalho_logo">
+            <!-- Logo image with centering applied -->
+            <img class="logo_page" src="http://localhost:8888/sigecm/resources/views/assets/images/emblema.png" alt="Logo">
+        </div>
+        
+        <div class="cabecalho_info">
+            <h6>República de Moçambique</h6>
+            <div class="divisor_row">
+                <div class="divisor">
+                </div>
+            </div>
+            <h3>Presidência da República</h3>
+            <h4>Casa Militar</h4>
+            <h4 style="font-weight: 400; text-transform: none;">Departamento de Administração Logística</h4>
+            <h4 style="font-weight: 400; text-transform: none;">Repartição de Armamento e Munições</h4>
+        </div>
+    </div>
+
+    <div class="titulo_documento">
+        <h3> Relatório de Identificação das Munições.</h3>
+        <div class="line"></div>
+    </div>
+   
+    <table id="customers">
+        <thead>
+            <tr>
+                <th>Nº</th>
+                <th>Calibre da Munição</th>
+                <th>Tipo</th>
+                <th>Arma Compativel</th>
+                <th>Data de Fabricação</th>
+                <th>Quantidade em Estoque</th>
+                <th>Armazem</th>
+              </tr>
+        </thead>
+        <tbody>
+            {{tableItem}}
+        </tbody>
+    </table>
+    <div class="contador_total">
+        <h4>Total: {{total}}</h4>
+    </div>
+
+    <footer style="width: 100%;position: absolute; bottom: 0; right: 0;">
+        <div class="footer__division">
+            <p>Processado por Computador por {{utilizador}}</p>
+            <p>{{data_atual}}</p>
+        </div>
+    </footer>
+
+</body>
+</html>
