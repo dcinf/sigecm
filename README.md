@@ -90,12 +90,12 @@ sudo systemctl restart apache2
 Para clonar o projecto acesse o link :
 
 ```bash
-https://github.com/cleverdevelopper/fintech.git
+https://github.com/dcinf/sigecm.git
 ```
 
 ```bash
 cd /var/www
-git clone https://github.com/cleverdevelopper/fintech.git
+git clone https://github.com/dcinf/sigecm.git
 ```
 
 ```bash
